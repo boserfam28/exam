@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 
 const RepoDetails = (props) => {
 
-    let { name, stars, forks, language } = props.repo;
+    let { stargazers_count, forks_count, language } = props.repo;
 
     return (
         <div>
-            <h3>{name}'s details</h3>
+            <h3>{props.username}'s details</h3>
             <table className="table" cols={3}>
                 <thead>
                     <tr>
@@ -20,14 +20,18 @@ const RepoDetails = (props) => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{stars}</td>
-                        <td>{forks}</td>
+                        <td>{stargazers_count}</td>
+                        <td>{forks_count}</td>
                         <td>{language}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     )
+}
+
+RepoDetails.propTypes = {
+    username:PropTypes.string.isRequired
 }
 
 export default RepoDetails;
