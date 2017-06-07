@@ -10,6 +10,7 @@ const UserSearch = (props) => {
     return (
         <div id='userSearch'>
             <hr />
+            <p className="notification-box alert">Invalid username</p>
             <p>Search repositories by username</p>
             <form>
                 <input type='text' />

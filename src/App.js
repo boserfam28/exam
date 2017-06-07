@@ -12,7 +12,7 @@ class App extends Component {
                 <Header />
                 <UserSearch />
                 <span className="loading-indicator medium"></span>
-                <RepoSection languages={this.props.languages} repos={this.props.repos}/>
+                <RepoSection username='hello_dojo' languages={this.props.languages} repos={this.props.repos}/>
             </div>
         );
     }

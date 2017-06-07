@@ -13,18 +13,22 @@
 }
 
 #header button {
-    margin-left: 50px;
+    margin-left: 60px;
 }
 
 #userSearch {
-    width: 200px;
-    margin-left: 100px;
+    width: 300px;
+    margin-left: 50px;
     text-align: center;
 }
 
 #repoList {
-    width: 200px;
-    margin-left: 100px;
+    width: 300px;
+    margin-left: 50px;
     text-align: center;
+}
+
+span {
+    margin-left:168px;
 }
 

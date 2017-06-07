@@ -9,7 +9,7 @@ const RepoDetails = (props) => {
 
     return (
         <div>
-            <p>{name}'s details</p>
+            <h3>{name}'s details</h3>
             <table className="table" cols={3}>
                 <thead>
                     <tr>
