@@ -1,0 +1,30 @@
+*{
+    // outline: thin solid red;
+}
+
+#app {
+    width: 400px;
+    margin: 50px;
+}
+
+#header h1,button {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#header button {
+    margin-left: 50px;
+}
+
+#userSearch {
+    width: 200px;
+    margin-left: 100px;
+    text-align: center;
+}
+
+#repoList {
+    width: 200px;
+    margin-left: 100px;
+    text-align: center;
+}
+

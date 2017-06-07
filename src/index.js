@@ -3,4 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './styles.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const languages = ['JavaScript','CSS','HTML']
+const repos = ['exam','exam-review','validated form']
+
+ReactDOM.render(<App languages={languages} repos={repos}/>, document.getElementById('root'));
