@@ -25,7 +25,7 @@ Please write your answer [here](./map.js)
 3. You can define a React component a few different ways, including (1) as a simple function or (2) as a class that extends the `Component` piece of the React library. How should you decide when to use which syntax?
 
 ---
-> Simple functions should be used when your component is simply taking in data and outputting static text.  They can be re-used easily by simply changing the data that's passed in.  Components created using class are referred to as 'smart components' because they need to maintain some kind of state data and render updates to the browser when their state changes, e.g. when the user enters data, submits forms, etc.
+> Simple functions should be used when your component is simply taking in data and outputting static text.  They can be re-used easily by simply changing the data that's passed in.  Components created using class are referred to as 'smart components' because they need to maintain some kind of state data and render updates to the browser when their state changes, e.g. when the user enters data, submits forms, etc. 
 ---
 
 4. Please transpile the following JSX code into JavaScript that the browser can understand:
