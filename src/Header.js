@@ -6,7 +6,7 @@ import { Route, Redirect } from 'react-router-dom'
 const Header = (props) => {
 
     const handleClick = (event) => {
-        this.history.pushState(null,'/');
+        this.history.push('/');
     }
 
     return(
