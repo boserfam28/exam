@@ -3,9 +3,11 @@
 import Header from './Header'
 import UserSearch from './UserSearch'
 import RepoSection from './RepoSection'
+import HomePage from './HomePage'
+import RepoDetails from './RepoDetails'
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router } from 'react-router-dom'
+import { Route, BrowserRouter as Router } from 'react-router-dom'
 
 class App extends Component {
 
@@ -53,14 +55,27 @@ class App extends Component {
             <Router>
                 <div id="app">
                     <Header />
-                    <UserSearch getRepoList={this.getRepoList} />
-                    {this.state.isLoading? <span className="loading-indicator medium"></span>:null}
-                    {this.state.username == ''?null:<RepoSection username={this.state.username} repos={this.state.repos}/>}
+                    <Route exact path='/' render={(props) => {
+                        return <HomePage 
+                            { ... props} 
+                            getRepoList={this.getRepoList}
+                            isLoading={this.state.isLoading}
+                            repos={this.state.repos}
+                            username={this.state.username}
+                        />
+                    }}/>
+                    <Route path='/repos/:id' render={(props) => {
+                        return <RepoDetails 
+                            { ... props} 
+                            repos={this.state.repos}
+                            username={this.state.username}
+                        />
+                    }}/>
+
                 </div>
             </Router>
         );
     }
 }
-                   //{this.state.username === ''?null:}
 
 export default App;

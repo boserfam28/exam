@@ -26,6 +26,7 @@ class UserSearch extends Component {
 
         this.props.getRepoList(this.state.searchText, this.errorCallback)
             .then(() => {
+                console.log('resetting search');
                 this.setState({
                     searchText:'',
                     disabled:true,
@@ -35,7 +36,6 @@ class UserSearch extends Component {
             .catch(() => {
                 console.log('user search error catch encountered');
                 this.setState({
-                    searchText:'',
                     disabled:true,
                     errorText:'Invalid username'
                 })
@@ -60,7 +60,7 @@ class UserSearch extends Component {
                 {this.state.errorText.length === 0?null:<p className="notification-box alert">{this.state.errorText}</p>}
                 <p>Search repositories by username</p>
                 <form onSubmit={this.handleSubmit}>
-                    <input type='text' onChange={this.handleChange}/>
+                    <input type='text' onChange={this.handleChange} value={this.state.searchText} />
                     <input type='submit' className='button expand' value='Search' disabled={this.state.disabled}/>
                 </form>
                 <hr />

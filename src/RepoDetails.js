@@ -3,13 +3,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const RepoDetails = (props) => {
+const RepoDetails = ({ match,repos,username }) => {
 
-    let { stargazers_count, forks_count, language } = props.repo;
+    let repo = null;
+    for(let i=0; i<repos.length; i++){
+        if(repos[i].id == match.params.id)
+            repo = repos[i];
+    }
+    console.log(repo)
+    
+    let { stargazers_count, forks_count, language } = repo;   
 
     return (
         <div>
-            <h3>{props.username}'s details</h3>
+            <h3>{username}'s details</h3>
             <table className="table" cols={3}>
                 <thead>
                     <tr>
@@ -31,7 +38,8 @@ const RepoDetails = (props) => {
 }
 
 RepoDetails.propTypes = {
-    username:PropTypes.string.isRequired
+    username:PropTypes.string.isRequired,
+    repos:PropTypes.array.isRequired
 }
 
 export default RepoDetails;
