@@ -26,7 +26,6 @@ class UserSearch extends Component {
 
         this.props.getRepoList(this.state.searchText, this.errorCallback)
             .then(() => {
-                console.log('resetting search');
                 this.setState({
                     searchText:'',
                     disabled:true,
@@ -34,19 +33,11 @@ class UserSearch extends Component {
                 })
             })
             .catch(() => {
-                console.log('user search error catch encountered');
                 this.setState({
                     disabled:true,
                     errorText:'Invalid username'
                 })
             })
-    }
-
-    errorCallback = (errorText) => {
-        console.log('got to error callback')
-        this.setState({
-            errorText:errorText
-        })
     }
 
     validateText = (text) => {

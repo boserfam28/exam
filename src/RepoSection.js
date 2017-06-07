@@ -4,49 +4,26 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import RepoSelector from './RepoSelector';
 import RepoTable from './RepoTable';
-import RepoDetails from './RepoDetails';
 import { Route } from 'react-router-dom'
 
-class RepoSection extends Component {
+const RepoSection = (props) => {
 
-    constructor(props){
-        super(props);
-        this.state = {
-            repoFilter:'All'
-        }
-    }
-
-    updateRepoFilter = (text) => {
-        this.setState({
-            repoFilter:text
-        })
-    }
-
-    render(){
-        console.log('building repo section');
-        return (
-            <div id='repoList'>
-                <h3>{this.props.username}'s repositories</h3>
-                <p>Filter repos by primary language</p>
-                <RepoSelector repos={this.props.repos} updateRepoFilter={this.updateRepoFilter} />
-                <RepoTable repos={this.props.repos} repoFilter={this.state.repoFilter} />
-            </div>
-        )
-    }
+    return (
+        <div id='repoList'>
+            <h3>{props.username}'s repositories</h3>
+            <p>Filter repos by primary language</p>
+            <RepoSelector repos={props.repos} updateRepoFilter={props.updateRepoFilter} />
+            <RepoTable repos={props.repos} repoFilter={props.repoFilter} />
+        </div>
+    )
 }
-
-
-
-//
-  //              
-    //            <Route path="/repos/:username" render={(props) => {
-      //              <RepoDetails props={...props} username={this.props.username} repo>
-        //        }} />
 
 
 RepoSection.propTypes = {
     username:PropTypes.string.isRequired,
-    repos:PropTypes.array.isRequired
+    repos:PropTypes.array.isRequired,
+    repoFilter:PropTypes.string.isRequired,
+    updateRepoFilter:PropTypes.func.isRequired
 }
 
 export default RepoSection;

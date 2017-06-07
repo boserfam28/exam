@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom'
 const RepoTable = (props) => {
 
     let filteredRepos = props.repos.filter((current,index) => {
-        return (current.language === props.repoFilter || props.repoFilter === 'All');
+        return ((current.language === null && props.repoFilter === 'null') || 
+            current.language === props.repoFilter || 
+            props.repoFilter === 'All');
     })
 
     let repoList = filteredRepos.map((current,index) => {

@@ -10,13 +10,12 @@ const RepoDetails = ({ match,repos,username }) => {
         if(repos[i].id == match.params.id)
             repo = repos[i];
     }
-    console.log(repo)
     
-    let { stargazers_count, forks_count, language } = repo;   
+    let { name, stargazers_count, forks_count, language } = repo;   
 
     return (
         <div>
-            <h3>{username}'s details</h3>
+            <h3>{name}'s details</h3>
             <table className="table" cols={3}>
                 <thead>
                     <tr>
@@ -38,7 +37,6 @@ const RepoDetails = ({ match,repos,username }) => {
 }
 
 RepoDetails.propTypes = {
-    username:PropTypes.string.isRequired,
     repos:PropTypes.array.isRequired
 }
 

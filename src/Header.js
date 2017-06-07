@@ -1,25 +1,29 @@
 'use strict'
 
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types';
+import { Link, Route } from 'react-router-dom'
 
 const Header = (props) => {
 
-    const handleClick = (event) => {
-        this.history.push('/');
+    const handleClick = () => {
+        props.resetHomePage()
     }
 
     return(
         <div id='header'>
             <h1>Github viewer</h1>
             <Route path="/repos/:id" render={(props) => {
-                    return <button className='button' onClick={this.handleClick}>Home</button>
-                }} 
-            />
+                    return <Link to='/' ><button className='button' onClick={handleClick} >Home</button></Link>
+            }}/>
             
             <hr />
         </div>
     )
+}
+
+Header.propTypes = {
+    resetHomePage:PropTypes.func.isRequired
 }
 
 export default Header;

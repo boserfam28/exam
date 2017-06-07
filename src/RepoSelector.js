@@ -6,10 +6,13 @@ import PropTypes from 'prop-types';
 const RepoSelector = (props) => {
 
     const uniqueLanguages = (arr) => {
-        let unique = {};
+        let unique = {
+            null:true
+        };
         arr.forEach((current) => {
             let {language} = current;
-            unique[language] = true;
+            if(language)
+                unique[language] = true;
         })
         return Object.keys(unique);
     }
@@ -19,7 +22,6 @@ const RepoSelector = (props) => {
     }
 
     let languages = uniqueLanguages(props.repos);
-    console.log(languages)
 
     let languageOptions = languages.map((current,index) => {
         return <option key={index}>{current}</option>

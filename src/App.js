@@ -1,10 +1,9 @@
 'use strict'
 
 import Header from './Header'
-import UserSearch from './UserSearch'
-import RepoSection from './RepoSection'
 import HomePage from './HomePage'
 import RepoDetails from './RepoDetails'
+
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Route, BrowserRouter as Router } from 'react-router-dom'
@@ -16,13 +15,21 @@ class App extends Component {
         this.state={
             username:'',
             repos:[],
-            isLoading:false
+            isLoading:false,
+            repoFilter:'All'
         }
     }
 
-    getRepoList = (user) => {
-        console.log('getting repo list for ' + user);
+    resetHomePage = () => {
+        this.setState({
+            username:'',
+            repos:[],
+            isLoading:false,
+            repoFilter:'All'
+        })
+    }
 
+    getRepoList = (user) => {
         this.setState({
             repos:[],
             isLoading:true
@@ -34,13 +41,11 @@ class App extends Component {
                 this.setState({
                     username:user,
                     repos:response.data,
-                    isLoading:false
+                    isLoading:false,
+                    repoFilter:'All'
                 })
-                console.log('done with then');
             })
             .catch((err) => {
-                console.log('error encountered');
-                console.log('repos',this.state.repos);
                 this.setState({
                     username:'',
                     repos:[],
@@ -50,11 +55,17 @@ class App extends Component {
             })
     }
 
+    updateRepoFilter = (text) => {
+        this.setState({
+            repoFilter:text
+        })
+    }
+
     render() {
         return (
             <Router>
                 <div id="app">
-                    <Header />
+                    <Header resetHomePage={this.resetHomePage} />
                     <Route exact path='/' render={(props) => {
                         return <HomePage 
                             { ... props} 
@@ -62,13 +73,14 @@ class App extends Component {
                             isLoading={this.state.isLoading}
                             repos={this.state.repos}
                             username={this.state.username}
+                            repoFilter={this.state.repoFilter}
+                            updateRepoFilter={this.updateRepoFilter}
                         />
                     }}/>
                     <Route path='/repos/:id' render={(props) => {
                         return <RepoDetails 
                             { ... props} 
                             repos={this.state.repos}
-                            username={this.state.username}
                         />
                     }}/>
 
